@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Save } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 // Define questions for each activity type
 const activityQuestions: Record<string, string[]> = {
@@ -95,7 +95,7 @@ export const TimeSection: React.FC<TimeSectionProps> = ({
     if (checked) {
       const questions = getRandomQuestions(activityQuestions[act]);
       const newNotes = { ...activity.activityNotes };
-      questions.forEach((q, i) => {
+      questions.forEach((i) => {
         newNotes[`${act}_${i}`] = '';
       });
       onActivityChange('activityNotes', newNotes);

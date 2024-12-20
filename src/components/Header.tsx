@@ -1,6 +1,5 @@
 import React from 'react';
 import { DateSelector } from './DateSelector';
-import { Save } from 'lucide-react';
 
 interface HeaderProps {
   date: Date;

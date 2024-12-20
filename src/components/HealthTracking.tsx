@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, Save } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 
 interface HealthData {
   seizures: {
