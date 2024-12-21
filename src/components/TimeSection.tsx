@@ -84,6 +84,9 @@ export const TimeSection: React.FC<TimeSectionProps> = ({
   const amounts = ['All', 'Most', 'Half', 'Little'];
   const availableActivities = ['Exercise', 'TV', 'Reading', 'Learning', 'Other'];
 
+  // Add this ref to track which activities have had questions generated
+  const questionsGeneratedFor = React.useRef<Set<string>>(new Set());
+
   const handleActivityToggle = (act: string, checked: boolean) => {
     const newActivities = checked
       ? [...activity.activities, act]
@@ -91,15 +94,28 @@ export const TimeSection: React.FC<TimeSectionProps> = ({
     
     onActivityChange('activities', newActivities);
     
-    // Initialize notes for new activity with empty strings
-    if (checked) {
+    if (checked && !questionsGeneratedFor.current.has(act)) {
       const questions = getRandomQuestions(activityQuestions[act]);
       const newNotes = { ...activity.activityNotes };
-      questions.forEach((i) => {
+      questions.forEach((_, i) => {
         newNotes[`${act}_${i}`] = '';
       });
       onActivityChange('activityNotes', newNotes);
+      questionsGeneratedFor.current.add(act);
     }
+  };
+
+  // Add this to display the questions
+  const getQuestionsForActivity = (act: string) => {
+    // Find existing questions for this activity
+    const existingQuestions = Object.keys(activity.activityNotes)
+      .filter(key => key.startsWith(`${act}_`))
+      .map(key => {
+        const idx = parseInt(key.split('_')[1]);
+        return { question: activityQuestions[act][idx], key };
+      });
+
+    return existingQuestions;
   };
 
   return (
@@ -215,14 +231,14 @@ export const TimeSection: React.FC<TimeSectionProps> = ({
               {activity.activities.map((act) => (
                 <div key={act} className="mt-4 space-y-3">
                   <h4 className="font-medium text-gray-700">{act} Notes:</h4>
-                  {getRandomQuestions(activityQuestions[act]).map((question, idx) => (
-                    <div key={`${act}_${idx}`} className="ml-4">
+                  {getQuestionsForActivity(act).map(({ question, key }) => (
+                    <div key={key} className="ml-4">
                       <label className="block text-sm text-gray-600 mb-1">{question}</label>
                       <textarea
-                        value={activity.activityNotes?.[`${act}_${idx}`] || ''}
+                        value={activity.activityNotes[key] || ''}
                         onChange={(e) => {
                           const newNotes = { ...activity.activityNotes };
-                          newNotes[`${act}_${idx}`] = e.target.value;
+                          newNotes[key] = e.target.value;
                           onActivityChange('activityNotes', newNotes);
                         }}
                         className="w-full px-3 py-2 rounded border focus:ring-2 focus:ring-blue-500 focus:border-transparent"

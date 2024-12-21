@@ -133,7 +133,8 @@ function App() {
           debouncedMorning,
           debouncedAfternoon,
           debouncedEvening,
-          debouncedHealth
+          debouncedHealth,
+          achievements
         );
         if (saved) {
           setToastMessage('Changes saved automatically');
@@ -157,6 +158,7 @@ function App() {
     debouncedAfternoon,
     debouncedEvening,
     debouncedHealth,
+    achievements,
   ]);
 
   const handleActivityChange = (
