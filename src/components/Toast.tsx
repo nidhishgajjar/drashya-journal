@@ -16,7 +16,7 @@ export const Toast: React.FC<ToastProps> = ({ message, onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed bottom-4 right-4 flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-up">
+    <div className="fixed bottom-4 right-4 left-4 sm:left-auto flex items-center justify-center sm:justify-start gap-2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-up">
       <CheckCircle className="w-5 h-5" />
       {message}
     </div>

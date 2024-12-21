@@ -20,19 +20,19 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-md overflow-hidden">
-      <div className="p-6 space-y-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-gray-800">Daily Journal</h2>
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Daily Journal</h2>
           <DateSelector selectedDate={date} onDateChange={onDateChange} />
         </div>
         
-        <div className="bg-white/50 rounded-lg p-6 backdrop-blur-sm space-y-4">
+        <div className="bg-white/50 rounded-lg p-4 sm:p-6 backdrop-blur-sm space-y-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="text-xl">💗</span>
               <span className="font-medium text-gray-700">How I Feel Today:</span>
             </div>
-            <div className="flex gap-4 ml-8">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {[
                 { emoji: '😊', label: 'Great', color: 'bg-green-500' },
                 { emoji: '😐', label: 'Okay', color: 'bg-yellow-500' },

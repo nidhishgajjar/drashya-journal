@@ -293,16 +293,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8">
-      <div className="max-w-4xl mx-auto p-4 space-y-6">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-4 sm:py-8">
+      <div className="max-w-4xl mx-auto p-2 sm:p-4 space-y-4 sm:space-y-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center p-6 bg-white rounded-lg shadow-sm"
+          className="text-center p-4 sm:p-6 bg-white rounded-lg shadow-sm"
         >
           <motion.h1 
-            className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent"
           >
             Hello Drashya!
           </motion.h1>
@@ -310,7 +310,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mt-2 text-xl text-gray-600"
+            className="mt-2 text-base sm:text-xl text-gray-600"
           >
             I'm Robin, your AI friend. Tell me about your day.
           </motion.p>

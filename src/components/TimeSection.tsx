@@ -120,15 +120,15 @@ export const TimeSection: React.FC<TimeSectionProps> = ({
 
   return (
     <div className={`${bgColor} rounded-lg shadow-md`}>
-      <div className="p-6">
-        <div className="flex items-center mb-6">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">{icon}</span>
-            <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+      <div className="p-4 sm:p-6">
+        <div className="flex items-center mb-4 sm:mb-6">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="text-xl sm:text-2xl">{icon}</span>
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{title}</h3>
           </div>
         </div>
-        <div className="space-y-6 ml-8">
-          <div className="flex items-center gap-3 bg-white/60 p-3 rounded-lg backdrop-blur-sm">
+        <div className="space-y-4 sm:space-y-6 ml-4 sm:ml-8">
+          <div className="flex items-center gap-2 sm:gap-3 bg-white/60 p-2 sm:p-3 rounded-lg backdrop-blur-sm">
             <Clock className="w-5 h-5 text-gray-600" />
             <input
               type="time"
@@ -210,10 +210,10 @@ export const TimeSection: React.FC<TimeSectionProps> = ({
             </div>
           </div>
 
-          <div className="bg-white/60 p-4 rounded-lg backdrop-blur-sm">
-            <div className="font-medium text-gray-700 mb-3">Activities:</div>
-            <div className="space-y-4">
-              <div className="flex flex-wrap gap-3">
+          <div className="bg-white/60 p-3 sm:p-4 rounded-lg backdrop-blur-sm">
+            <div className="font-medium text-gray-700 mb-2 sm:mb-3">Activities:</div>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {availableActivities.map((act) => (
                   <label key={act} className="flex items-center gap-2 bg-white px-4 py-2 rounded-md shadow-sm">
                     <input
